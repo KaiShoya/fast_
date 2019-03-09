@@ -12,7 +12,7 @@ App.room = App.cable.subscriptions.create({channel: "RoomChannel", id: location.
   },
 
   speak: function(message) {
-    this.perform('speak', {message: message, id: location.pathname.slice(1)});
+    this.perform('speak', {message: message});
   }
 }, $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
   if (event.keyCode === 13) {

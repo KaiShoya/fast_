@@ -18,6 +18,10 @@
       <div class="actions submit_login">
         <%= f.submit "ログイン", {class: "achromatic_color_light bg_accent_color"} %>
       </div>
+
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,12 @@
-<div id="thread_list" class="absolute bg_main_color_light position-fixed d-none">
+<div id="thread_list" class="absolute bg_main_color_light position-fixed text-center d-none">
+  <div class="align-middle mx-auto text-center justify-content-start bg_main_color_light" id="thread_list_close">
+    <button class="main_color_dark"><div>閉じる</div><div>▼</div></button>
+  </div>
   <ul class="nav flex-column">
     <% @rooms.each do |room| %>
       <li class="nav-item">
-        <a class="nav-link active" href="/<%= room.id %>">
-          <%= room.name %>
+        <a class="nav-link <%= (@room_id.to_i == room.id) ? "accent_color" : "achromatic_color_dark" %>" href="/<%= room.id %>">
+          #<%= room.name %>
         </a>
       </li>
     <% end %>
@@ -15,7 +18,8 @@
 
 <div id="thread_close" class="absolute bg_main_color_dark position-fixed d-none">
   <div class="align-middle mx-auto text-center justify-content-start">
-    <button class="main_color_dark"><div>閉じる</div><div>▼</div></button>
+    <button type="button" class="achromatic_color_dark bg_accent_color" id="open_conf" data-toggle="modal" data-target="#openConf">会議を開く</button>
+    <%# <button class="main_color_dark"><div>閉じる</div><div>▼</div></button> %>
   </div>
 </div>
 
@@ -33,11 +37,74 @@
   </form>
 </footer>
 
+<div class="modal fade" id="openConf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form action="/room/create" method="post">
+          <h2 class="modal-title" id="exampleModalCenterTitle">会議を開く</h2>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend col-3 open_conf_label">
+              <span class="input-group-text col bg_main_color_dark achromatic_color_light" id="agenda">議題</span>
+            </div>
+            <input type="text" class="form-control col" placeholder="" aria-label="agenda" aria-describedby="agenda" name="name">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend col-3 open_conf_label">
+              <span class="input-group-text col bg_main_color_dark achromatic_color_light" id="discussion">議論概要</span>
+            </div>
+            <input type="text" class="form-control col" placeholder="" aria-label="discussion" aria-describedby="discussion" name="detail">
+          </div>
+
+          <h2 class="modal-title" id="exampleModalCenterTitle">論点／観点</h2>
+          <%# <div class="row">
+            <div class="col-sm"><input type="text" class="form-control" name="text1"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text2"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text3"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm"><input type="text" class="form-control" name="text4"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text5"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text6"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm"><input type="text" class="form-control" name="text7"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text8"></div>
+            <div class="col-sm"><input type="text" class="form-control" name="text9"></div>
+          </div> %>
+        </form>
+      </div>
+      <div class="align-middle mx-auto text-center">
+        <button type="button" class="btn bg_accent_color achromatic_color_dark" id="start_conf">開始</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 $(function() {
+  // closeとopenのサイズを合わせる
+  $("#thread_close").width($("#thread_open").width());
+  $("#thread_close").height($("#thread_open").height());
+  $("#thread_close button").width($("#thread_open button").width());
+  $("#thread_close button").height($("#thread_open button").height());
+  $("#thread_list_close").width($("#thread_open").width());
+  $("#thread_list_close").height($("#thread_open").height());
+  $("#thread_list_close button").width($("#thread_open button").width());
+  $("#thread_list_close button").height($("#thread_open button").height());
+
   $("#thread_open button").on("click", function() {
     $("#thread_close").toggleClass("d-none");
     $("#thread_list").toggleClass("d-none");
+  });
+
+  $("#thread_list_close button").on("click", function() {
+    $("#thread_close").toggleClass("d-none");
+    $("#thread_list").toggleClass("d-none");
+  });
+
+  $("#start_conf").on("click", function() {
+    $("#openConf form").submit();
   });
 });
 </script>

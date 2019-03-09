@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :users
+  has_many :messages
   validates :content, presence: true
   after_create_commit { MessageBroadcastJob.perform_later self }
 end
