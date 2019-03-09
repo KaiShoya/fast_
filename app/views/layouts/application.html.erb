@@ -15,15 +15,21 @@
         <div class="left">
           <ul class="nav flex-column">
             <%
-            channels = ["議題1", "議題2", "議題3"]
-            channels.each do |ch|
+            @rooms.each do |room|
             %>
             <li class="nav-item">
-              <a class="nav-link active" href="#">
-                #<%= ch %>
+              <a class="nav-link active" href="/<%= room.id %>">
+                <%= room.name %>
               </a>
             </li>
             <% end %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+            <li class="nav-item">
+              <%= @user.id %>:<%= @user.username %>:<%= @room_id %>
+            </li>
+            
           </ul>
         </div>
         <div class="contents d-flex">
@@ -31,9 +37,6 @@
         </div>
     </div>
 
-    <!--<% if user_signed_in? %>
-      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-    <% end %>-->
     <!--<% if notice %>
       <p class="notice"><%= notice %></p>
     <% elsif alert %>

@@ -1,4 +1,4 @@
-App.room = App.cable.subscriptions.create("RoomChannel", {
+App.room = App.cable.subscriptions.create({channel: "RoomChannel", id: location.pathname.slice(1)}, {
   connected: function() {
     // Called when the subscription is ready for use on the server
   },
@@ -12,7 +12,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   speak: function(message) {
-    this.perform('speak', {message: message});
+    this.perform('speak', {message: message, id: location.pathname.slice(1)});
   }
 }, $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
   if (event.keyCode === 13) {

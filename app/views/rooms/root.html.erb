@@ -1,7 +1,9 @@
 <%# <h1>Chat room</h1> %>
 
 <div class="chat_msg p-2" id="messages">
-  <%= render @messages %>
+  <% unless @messages.nil? %>
+    <%= render @messages %>
+  <% end %>
 </div>
 
 <div class="input mt-auto p-2 bg_main_color_dark">
