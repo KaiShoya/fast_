@@ -57,3 +57,32 @@ body {
 .bg_accent_color {
   background-color: #FFB758;
 }
+
+.submit_login {
+  width: 400px;
+}
+
+.submit_login input {
+  width: 150px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.login {
+  width: 400px;
+  height: 100vh;
+  margin-top: 150px;
+}
+#username input {
+  width: 400px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 5px 20px;
+}
+#password input {
+  width: 400px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 5px 20px;
+}
