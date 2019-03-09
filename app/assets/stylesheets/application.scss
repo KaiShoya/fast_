@@ -1,1 +1,59 @@
- @import "bootstrap";
+@import "bootstrap";
+
+body {
+  height: 100%;
+}
+.content {
+  display: flex;
+  height: 100%;
+}
+.left {
+  width: 150px;
+  height: 100%;
+}
+.contents {
+  flex: 1;
+  height: 100vh;
+}
+// .chat_msg {
+// }
+.input {
+  width: 100%;
+}
+
+// メインカラー（淡）
+.main_color_light {
+  color: #E3EDF8;
+}
+// メインカラー（濃）
+.main_color_dark {
+  color: #688FBB;
+}
+// 無彩色（淡）
+.achromatic_color_light {
+  color: #F2EBEB;
+}
+// 無彩色（濃）
+.achromatic_color_dark {
+  color: #676767;
+}
+// アクセントカラー
+.accent_color {
+  color: #FFB758;
+}
+
+.bg_main_color_light {
+  background-color: #E3EDF8;
+}
+.bg_main_color_dark {
+  background-color: #688FBB;
+}
+.bg_achromatic_color_light {
+  background-color: #F2EBEB;
+}
+.bg_achromatic_color_dark {
+  background-color: #676767;
+}
+.bg_accent_color {
+  background-color: #FFB758;
+}

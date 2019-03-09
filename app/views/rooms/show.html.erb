@@ -1,10 +1,19 @@
-<h1>Chat room</h1>
+<%# <h1>Chat room</h1> %>
 
-<div id="messages">
+<div class="chat_msg p-2" id="messages">
   <%= render @messages %>
 </div>
 
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>
+<div class="input mt-auto p-2 bg_main_color_dark">
+  <form>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="submit_btn" data-behavior="room_speaker" id="input_msg">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary bg_achromatic_color_light" type="button" id="submit_btn">送信</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+</script>

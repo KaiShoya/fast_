@@ -10,15 +10,39 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="content">
+        <div class="left">
+          <ul class="nav flex-column">
+            <%
+            channels = ["議題1", "議題2", "議題3"]
+            channels.each do |ch|
+            %>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                #<%= ch %>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="contents d-flex">
+          <%= yield %>
+        </div>
+    </div>
+
+    <!--<% if user_signed_in? %>
       <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-    <% end %>
-    <% if notice %>
+    <% end %>-->
+    <!--<% if notice %>
       <p class="notice"><%= notice %></p>
     <% elsif alert %>
       <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <%= yield %>
+    <% end %>-->
+  <% else %>
+    <%# <div class="d-flex align-items-center"> %>
+      <%= yield %>
+    <%# </div> %>
+  <% end %>
   </body>
 </html>
