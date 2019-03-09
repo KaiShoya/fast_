@@ -11,8 +11,12 @@
 
   <body>
   <% if user_signed_in? %>
-    <div class="content">
-        <div class="left">
+  <div class="content">
+    <div class="contents">
+      <%= yield %>
+    </div>
+  </div>
+     <!--   <div class="left">
           <ul class="nav flex-column">
             <%
             @rooms.each do |room|
@@ -26,16 +30,12 @@
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
-            <li class="nav-item">
-              <%= @user.id %>:<%= @user.username %>:<%= @room_id %>
-            </li>
-            
           </ul>
         </div>
         <div class="contents d-flex">
           <%= yield %>
         </div>
-    </div>
+    </div>-->
 
     <!--<% if notice %>
       <p class="notice"><%= notice %></p>
@@ -43,9 +43,7 @@
       <p class="alert"><%= alert %></p>
     <% end %>-->
   <% else %>
-    <%# <div class="d-flex align-items-center"> %>
-      <%= yield %>
-    <%# </div> %>
+    <%= yield %>
   <% end %>
   </body>
 </html>

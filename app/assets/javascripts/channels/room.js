@@ -16,7 +16,6 @@ App.room = App.cable.subscriptions.create({channel: "RoomChannel", id: location.
   }
 }, $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
   if (event.keyCode === 13) {
-    if (event.target.value === undefined || event.target.value === '') {return;}
     App.room.speak(event.target.value);
     event.target.value = '';
     event.preventDefault();
@@ -26,7 +25,6 @@ App.room = App.cable.subscriptions.create({channel: "RoomChannel", id: location.
 $(function() {
   // 送信ボタン押下時の処理
   $('#submit_btn').on('click', function() {
-    if (event.target.value === undefined || event.target.value === '') {return;}
     var element = $('#input_msg');
     App.room.speak(element.val());
     element.val('');

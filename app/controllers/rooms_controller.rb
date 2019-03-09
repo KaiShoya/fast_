@@ -6,7 +6,6 @@ class RoomsController < ApplicationController
       @messages = room.messages
     end
     @messages = nil
-    @user = current_user
   end
 
   def show
@@ -14,6 +13,5 @@ class RoomsController < ApplicationController
     @rooms = Room.all
     room = Room.find(params[:id])
     @messages = room.messages
-    @user = current_user
   end
 end

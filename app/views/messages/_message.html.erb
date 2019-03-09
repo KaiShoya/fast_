@@ -1,4 +1,9 @@
 <div class="message">
-  <%# <p><%= message.content %></p> %>
-  <p><%= "#{message.user.email}: #{message.content}" %></p>
+  <div class="media">
+    <%= image_tag('1.png', class: "align-self-start mr-3") %>
+    <div class="media-body">
+      <p class="mt-0"><%= User.find(message.user_id)[:username] %> <%= message.created_at.strftime("%I:%M %p") %></p>
+      <p><%= message.content %></p>
+    </div>
+  </div>
 </div>

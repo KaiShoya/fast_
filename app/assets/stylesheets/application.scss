@@ -4,15 +4,15 @@ body {
   height: 100%;
 }
 .content {
-  display: flex;
-  height: 100%;
+  // display: flex;
+  height: 100vh;
 }
 .left {
   width: 150px;
   height: 100%;
 }
 .contents {
-  flex: 1;
+  // flex: 1;
   height: 100vh;
 }
 // .chat_msg {
@@ -85,4 +85,33 @@ body {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 5px 20px;
+}
+footer form {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#thread_open {
+  width: 150px;
+}
+#thread_open button {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+.absolute {
+  position: absolute;
+}
+#thread_list {
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 100vh;
+}
+.hidden {
+  display: none;
+}
+#thread_close {
+  width: 150px;
+  bottom: 0px;
+  left: 0px;
 }
