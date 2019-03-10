@@ -6,8 +6,8 @@ class RoomsController < ApplicationController
     @rooms = Room.all
     if @rooms.size > 0
       @room_id = @rooms[0].id.to_i
-      room = Room.find(@room_id)
-      @messages = room.messages
+      @room = Room.find(@room_id)
+      @messages = @room.messages
     else
       @messages = nil
     end
@@ -16,12 +16,12 @@ class RoomsController < ApplicationController
   def show
     @room_id = params[:id].to_i
     @rooms = Room.all
-    room = Room.find(params[:id])
-    @messages = room.messages
+    @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 
   def create
-    @room = Room.new(name: params[:name], detail: params[:detail])
+    @room = Room.new(name: params[:name], detail: params[:detail], limit: params[:limit])
 
     respond_to do |format|
       if @room.save
